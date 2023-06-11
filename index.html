@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>My Web Page</title>
+  <style>
+  #canvas-container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+  </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>My Web Page</h1>
+      <p>
+        <strong>Name:</strong> Kasi Dhanvi <br>
+        <strong></strong><br>
+        <strong>Branch:</strong> Mechanical and Aerospace Engineering<br>
+        <strong></strong><br>
+        <strong>POR's:</strong> <br>
+  
+        Elan & ηVision Techy & Workshop Voulnteer (Feb.22- Mar.22)<br> 
+        MMC Technical Team member (2022- present)<br> 
+      TEDx Content & Curation Volunteer (Feb.23- Apr.23)<br> 
+      TEDx Hospitality Volunteer (Feb.23- Apr.23)<br> 
+      I worked for Fresher's Day, Alumni Day which was held in December 2022<br> 
+       <strong></strong><br>
+        <strong>Skills :</strong><br> 
+  
+        Languages - C, C++, Python, CSS, JavaScript, SQL, HTML, MATLAB<br>
+        Operating Systems - Windows, Linux<br>
+        Softwares - Solid Edge, ABAQUS<br>
+        Libraries - TensorFlow<br>
+        Tools - LaTex<br>
+        Others - Arduino, Raspberry Pi, JETSON NANO<br>
+        <strong></strong><br>
+        <strong>Hobbies:</strong> <br>
+        Art, music and gardening <br>
+        <strong></strong><br>
+    </p>
+    
+    <div id="canvas-container"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/controls/OrbitControls.js"></script>
+  <script src="https://cdn.sketchfab.com/api/1.2.0/viewer.min.js"></script>
+  <script>
+    // Create a scene
+    var scene = new THREE.Scene();
+
+    // Create a camera
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 5;
+
+    // Create a renderer
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+    // Add orbit controls for smooth interaction
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+    // Initialize the Sketchfab viewer
+    var sketchfabClient = new Sketchfab();
+    var uid = 'a2661c6aba3c41f39e58f85a447168b9';
+    var iframe = sketchfabClient.embed(uid, document.getElementById('canvas-container'), {
+      autospin: 0.5,
+      camera: 0,
+      ui_controls: 1
+    });
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
